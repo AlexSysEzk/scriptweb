@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AD Scripts | Gestión de Usuarios</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="win11-header">
+        <div class="win11-title">
+            <span class="ps-icon">⚡</span> Active Directory Scripts - Usuarios
+        </div>
+        <div class="win11-controls">
+            <span class="control-btn minimize" title="Atrás">─</span>
+            <span class="control-btn maximize" title="Pantalla Completa">◻</span>
+            <span class="control-btn close" title="Ir a Inicio">✕</span>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="hero-section" style="margin-bottom: 30px;">
+            <div class="terminal-prompt">
+                <span class="path" id="prompt-path" data-final="PS C:\ActiveDirectory\Usuarios&gt;">PS C:\ActiveDirectory&gt;</span> 
+                <span id="typewriter" data-command="cd .\Usuarios"></span><span class="cursor">_</span>
+            </div>
+        </section>
+
+        <section class="scripts-container">
+            
+            <details class="script-accordion">
+                <summary class="accordion-header">
+                    <div class="header-text">
+                        <h3>1. Creación Masiva de Usuarios desde CSV</h3>
+                        <p>Lee un archivo CSV, genera la contraseña inicial y mueve al usuario a la OU correspondiente.</p>
+                    </div>
+                    <div class="expand-icon">▼</div>
+                </summary>
+                
+                <div class="accordion-content">
+                    <div class="code-window">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <pre><code class="language-powershell">
+# Importar módulo de AD
+Import-Module ActiveDirectory
+
+# Ruta del archivo CSV
+$csvPath = "C:\temp\nuevos_usuarios.csv"
+$users = Import-Csv -Path $csvPath
+
+foreach ($user in $users) {
+    Write-Host "Creando usuario: $($user.Nombre)" -ForegroundColor Green
+    # Aquí iría el comando New-ADUser con sus parámetros...
+}
+                        </code></pre>
+                    </div>
+                </div>
+            </details>
+
+            <details class="script-accordion">
+                <summary class="accordion-header">
+                    <div class="header-text">
+                        <h3>2. Offboarding: Deshabilitar y mover usuario</h3>
+                        <p>Deshabilita la cuenta, resetea la contraseña, lo quita de los grupos y lo mueve a la OU de inactivos.</p>
+                    </div>
+                    <div class="expand-icon">▼</div>
+                </summary>
+                
+                <div class="accordion-content">
+                    <div class="code-window">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <pre><code class="language-powershell">
+$usuario = Read-Host "Introduce el sAMAccountName del usuario a dar de baja"
+
+Disable-ADAccount -Identity $usuario
+# Más lógica de offboarding aquí...
+                        </code></pre>
+                    </div>
+                </div>
+            </details>
+
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

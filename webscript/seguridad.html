@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AD Scripts | Seguridad y Auditoría</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="win11-header">
+        <div class="win11-title">
+            <span class="ps-icon">⚡</span> Active Directory Scripts - Seguridad
+        </div>
+        <div class="win11-controls">
+            <span class="control-btn minimize" title="Atrás">─</span>
+            <span class="control-btn maximize" title="Pantalla Completa">◻</span>
+            <span class="control-btn close" title="Ir a Inicio">✕</span>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="hero-section" style="margin-bottom: 30px;">
+            <div class="terminal-prompt">
+                <span class="path" id="prompt-path" data-final="PS C:\ActiveDirectory\Seguridad&gt;">PS C:\ActiveDirectory&gt;</span> 
+                <span id="typewriter" data-command="cd .\Seguridad"></span><span class="cursor">_</span>
+            </div>
+        </section>
+
+        <section class="scripts-container">
+            
+            <details class="script-accordion">
+                <summary class="accordion-header">
+                    <div class="header-text">
+                        <h3>1. Auditoría: Usuarios con "Password Never Expires"</h3>
+                        <p>Genera un reporte de todas las cuentas del dominio que tienen marcada la opción de que su contraseña nunca caduca.</p>
+                    </div>
+                    <div class="expand-icon">▼</div>
+                </summary>
+                <div class="accordion-content">
+                    <div class="code-window">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <pre><code class="language-powershell">
+Get-ADUser -Filter {PasswordNeverExpires -eq $true -and Enabled -eq $true} -Properties PasswordNeverExpires, LastLogonDate |
+    Select-Object Name, SamAccountName, LastLogonDate | 
+    Export-Csv -Path "C:\temp\Auditoria_PassNeverExpires.csv" -NoTypeInformation
+                        </code></pre>
+                    </div>
+                </div>
+            </details>
+
+            <details class="script-accordion">
+                <summary class="accordion-header">
+                    <div class="header-text">
+                        <h3>2. Listar miembros de "Domain Admins"</h3>
+                        <p>Script rápido para verificar quién tiene privilegios máximos en el dominio en este momento.</p>
+                    </div>
+                    <div class="expand-icon">▼</div>
+                </summary>
+                <div class="accordion-content">
+                    <div class="code-window">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <pre><code class="language-powershell">
+Get-ADGroupMember -Identity "Domain Admins" | Select-Object SamAccountName, Name, objectClass
+                        </code></pre>
+                    </div>
+                </div>
+            </details>
+
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

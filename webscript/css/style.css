@@ -1,0 +1,317 @@
+/* Variables modernas (Inspiración Windows 11 oscuro / PowerShell) */
+:root {
+    --bg-color: #0d0d0d;
+    --win-blue: #0078D4; /* Azul oficial de Microsoft */
+    --win-blue-hover: #106EBE;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --text-main: #f3f3f3;
+    --text-muted: #a0a0a0;
+    --ps-yellow: #f6e58d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    /* Usamos Inter como alternativa moderna a Segoe UI para web */
+    font-family: 'Inter', 'Segoe UI', sans-serif; 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================================
+   Cabecera Guiño Windows 11
+   ========================================= */
+.win11-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid var(--card-border);
+    font-size: 13px;
+    user-select: none;
+}
+
+.win11-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+}
+
+.ps-icon { color: var(--win-blue); }
+
+.win11-controls {
+    display: flex;
+    gap: 15px;
+    color: var(--text-muted);
+}
+
+.control-btn {
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.control-btn:hover { color: white; }
+.control-btn.close:hover { color: #ff4757; }
+
+/* =========================================
+   Contenedor Principal y Hero Terminal
+   ========================================= */
+.main-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    flex: 1;
+}
+
+.hero-section {
+    margin-bottom: 50px;
+}
+
+.terminal-prompt {
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--text-main);
+}
+
+.path { color: var(--ps-yellow); }
+
+.cursor {
+    display: inline-block;
+    width: 10px;
+    animation: blink 1s step-end infinite;
+    color: var(--win-blue);
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+/* =========================================
+   Tarjetas Fluent Design (Efecto Cristal)
+   ========================================= */
+.grid-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.fluent-card {
+    position: relative;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 30px 20px;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    backdrop-filter: blur(10px); /* Efecto cristal */
+}
+
+.fluent-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+}
+
+/* Brillo superior en las tarjetas (Guiño moderno) */
+.card-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--win-blue);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.fluent-card:hover .card-glow {
+    opacity: 1;
+}
+
+.icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.fluent-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.fluent-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.code-window {
+    position: relative;
+    background: #1e1e1e; /* Color oscuro típico de VS Code */
+    border-radius: 6px;
+    border: 1px solid #333;
+    overflow: hidden;
+}
+
+.code-window pre {
+    margin: 0;
+    padding: 20px;
+    overflow-x: auto; /* Scroll horizontal si el código es largo */
+}
+
+.code-window code {
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 0.9rem;
+    color: #d4d4d4; /* Color de texto claro para código */
+}
+
+.copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+
+.copy-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* =========================================
+   Estilos de los Acordeones (Scripts Desplegables)
+   ========================================= */
+.scripts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre las cajas */
+}
+
+.script-accordion {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: border-color 0.3s;
+}
+
+.script-accordion:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Ocultar la flechita fea por defecto del navegador */
+.script-accordion summary::-webkit-details-marker {
+    display: none;
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+    list-style: none; /* Oculta la flecha en Firefox */
+    user-select: none;
+}
+
+.header-text h3 {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    margin-bottom: 5px;
+}
+
+.header-text p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.expand-icon {
+    font-size: 1.2rem;
+    color: var(--win-blue);
+    transition: transform 0.3s ease;
+}
+
+/* Cuando el acordeón está abierto, giramos la flecha y mostramos el contenido */
+.script-accordion[open] .expand-icon {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    padding: 0 20px 20px 20px;
+    border-top: 1px solid transparent;
+}
+
+.script-accordion[open] .accordion-content {
+    border-top-color: var(--card-border);
+    padding-top: 20px;
+}
+
+/* =========================================
+   Ventana de Código (VS Code Style)
+   ========================================= */
+.code-window {
+    position: relative;
+    background: #1e1e1e;
+    border-radius: 6px;
+    border: 1px solid #333;
+    overflow: hidden;
+}
+
+.code-window pre {
+    margin: 0;
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.code-window code {
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 0.9rem;
+    color: #d4d4d4;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+
+.copy-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}

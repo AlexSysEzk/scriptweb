@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AD Scripts | Central de Automatización</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="win11-header">
+        <div class="win11-title">
+            <span class="ps-icon">⚡</span> Active Directory Scripts
+        </div>
+        <div class="win11-controls">
+            <span class="control-btn minimize" title="Atrás">─</span>
+            <span class="control-btn maximize" title="Pantalla Completa">◻</span>
+            <span class="control-btn close" title="Ir a Inicio">✕</span>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="hero-section">
+            <div class="terminal-prompt">
+                <span class="path" id="prompt-path">PS C:\&gt;</span> <span id="typewriter"></span><span class="cursor">_</span>
+            </div>
+            <p class="subtitle">Repositorio de scripts avanzados para la administración y automatización del dominio.</p>
+        </section>
+
+        <section class="grid-categories">
+            
+            <a href="usuarios.html" class="fluent-card">
+                <div class="card-glow"></div>
+                <div class="icon">👤</div>
+                <h3>Gestión de Usuarios</h3>
+                <p>Altas masivas CSV, Offboarding, reset de contraseñas y avisos de caducidad.</p>
+            </a>
+
+            <a href="grupos.html" class="fluent-card">
+                <div class="card-glow"></div>
+                <div class="icon">🛡️</div>
+                <h3>Gestión de Grupos</h3>
+                <p>Auditoría de grupos anidados, limpieza y gestión de miembros en masa.</p>
+            </a>
+
+            <a href="equipos.html" class="fluent-card">
+                <div class="card-glow"></div>
+                <div class="icon">💻</div>
+                <h3>Gestión de Equipos</h3>
+                <p>Detección de inactividad, limpieza de AD y movimientos dinámicos de OU.</p>
+            </a>
+
+            <a href="seguridad.html" class="fluent-card">
+                <div class="card-glow"></div>
+                <div class="icon">🔐</div>
+                <h3>Seguridad & Auditoría</h3>
+                <p>Exportación de delegaciones, reportes de salud (DCDiag) y alertas de Domain Admins.</p>
+            </a>
+
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
