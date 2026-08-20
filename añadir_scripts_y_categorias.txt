@@ -1,0 +1,29 @@
+1. Para añadir un script nuevo a una página que ya existe:
+Imagina que encuentras un script buenísimo para resetear contraseñas y quieres meterlo en la página de Usuarios. Solo tienes que abrir usuarios.html y pegar este bloque justo debajo del último script que tengas:
+
+
+<details class="script-accordion">
+    <summary class="accordion-header">
+        <div class="header-text">
+            <h3>TITULO DEL SCRIPT</h3>
+            <p>Breve descripción de lo que hace.</p>
+        </div>
+        <div class="expand-icon">▼</div>
+    </summary>
+    <div class="accordion-content">
+        <div class="code-window">
+            <button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <pre><code class="language-powershell">
+# PEGA TU CÓDIGO POWERSHELL AQUÍ
+            </code></pre>
+        </div>
+    </div>
+</details>
+¡Y listo! El CSS y el JS harán el resto de la magia automáticamente (el desplegable, el botón de copiar, etc.).
+
+2. Para añadir una nueva subcategoría (ej. "Gestión de GPOs"):
+Duplicas cualquier archivo que ya tengas (por ejemplo, equipos.html) y lo llamas gpos.html.
+
+Abres gpos.html y cambias el título y el data-command de la terminal (para que ponga cd .\GPOs).
+
+Abres tu index.html principal, copias una de las tarjetas (las <a class="fluent-card">...</a>), le cambias el icono, le pones de enlace gpos.html, ¡y ya la tienes enlazada en el menú principal!
